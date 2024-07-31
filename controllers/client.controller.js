@@ -85,17 +85,18 @@ const updateClient = async (req, res) => {
 
 const deleteClient = async (req, res) => {
     const id = req.params.id;
-    const deletedClient = await ClientDB.findByIdAndDelete(id);
-    if (deleteClient) {
+    console.log(id);
+    const checkId = await ClientDB.findOne({_id: id});
+    if (checkId) {
+        const deleteClient = await ClientDB.findByIdAndDelete(checkId);
         res.status(200).send({
             success: true,
             message: "client deleted successfully",
-            data: deletedClient
         })
     } else {
         res.status(404).send({
             success: false,
-            message: "something broken"
+            message: "no data found"
         })
     }
 }
