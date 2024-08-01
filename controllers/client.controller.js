@@ -85,7 +85,6 @@ const updateClient = async (req, res) => {
 
 const deleteClient = async (req, res) => {
     const id = req.params.id;
-    console.log(id);
     const checkId = await ClientDB.findOne({_id: id});
     if (checkId) {
         const deleteClient = await ClientDB.findByIdAndDelete(checkId);

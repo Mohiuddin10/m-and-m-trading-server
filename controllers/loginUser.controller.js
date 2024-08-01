@@ -1,5 +1,5 @@
 const path = require("path");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const UsersBO = require("../models/registerUsers.model");
 
 const getLogin = (req, res) => {

@@ -1,6 +1,6 @@
 const path = require("path");
 const UsersBO = require("../models/registerUsers.model");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRound = 10;
 
 
