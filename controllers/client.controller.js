@@ -11,7 +11,6 @@ const clientPage = (req, res) => {
 // find a specific client
 const findSingleClient = async (req, res) => {
     const id = req.params.id;
-    console.log(id);
     try {
         const findUser = await ClientDB.findById({_id: id});
         if(findUser) {
@@ -88,9 +87,6 @@ const createClient = async (req, res) => {
 // update a client 
 const updateClient = async (req, res) => {
     const id = req.params.id;
-    // const name = req.body.name;
-    // const address = req.body.address;
-    // const phone = req.body.phone; ===> does't matter 
     const findClient = await ClientDB.findByIdAndUpdate(id, req.body);
     // a single issue will arise that if the user put one field empty then it will be empty in database 
     if (findClient) {
