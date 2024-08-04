@@ -7,6 +7,33 @@ const clientPage = (req, res) => {
 }
 // client inpute page load end
 
+
+// find a specific client
+const findSingleClient = async (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    try {
+        const findUser = await ClientDB.findById({_id: id});
+        if(findUser) {
+            res.status(201).send({
+                success: true,
+                message: "Client found",
+                data: findUser
+            })
+        } else {
+            res.status(404).send({
+                success: false,
+                message: "Client Not Found"
+            })
+        }
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Something Broken"
+        })
+    }
+    
+}
 // get all client data 
 const getAllClient = async (req, res) => {
     const allClients = await ClientDB.find();
@@ -101,4 +128,4 @@ const deleteClient = async (req, res) => {
 }
 
 
-module.exports = { getAllClient, createClient, updateClient, deleteClient, clientPage }
+module.exports = { getAllClient, createClient, updateClient, deleteClient, clientPage, findSingleClient }

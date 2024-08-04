@@ -1,4 +1,4 @@
-const { getAllClient, createClient, updateClient, deleteClient, clientPage } = require("../controllers/client.controller");
+const { getAllClient, createClient, updateClient, deleteClient, clientPage, findSingleClient } = require("../controllers/client.controller");
 
 const router = require("express").Router();
 
@@ -7,6 +7,9 @@ router.get("/client", clientPage)
 
 // get all client data 
 router.get("/", getAllClient)
+
+// Get a specific client
+router.get("/:id", findSingleClient)
 
 
 // create a new client 
