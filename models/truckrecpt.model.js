@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const truckRecpDB = new mongoose.Schema({
-    clientId: {
+    clientName: {
         type: String,
         require: true
     },
