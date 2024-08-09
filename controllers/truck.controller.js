@@ -22,6 +22,24 @@ const getAllTruckRecpt = async (req, res) => {
 
 }
 
+// get single truckData
+const getSingleTruckData = async (req, res) => {
+    const id = req.params.id;
+    const singleTruckData = await TruckRecpDB.findById(id);
+    if (singleTruckData) {
+        res.status(201).send({
+            success: true,
+            message: "Truck data found",
+            data: singleTruckData
+        })
+    } else {
+        res.status(404).send({
+            success: false,
+            message: "Truck data not found"
+        })
+    }
+}
+
 
 const getTruckRecpt = async (req, res) => {
     const newTruckRecpt = await TruckRecpDB(req.body)
@@ -35,4 +53,4 @@ const getTruckRecpt = async (req, res) => {
 
 }
 
-module.exports = { getTruckRecpt, getAllTruckRecpt };
+module.exports = { getTruckRecpt, getAllTruckRecpt, getSingleTruckData };

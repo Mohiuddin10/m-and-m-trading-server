@@ -39,9 +39,8 @@ const truckRecpDB = new mongoose.Schema({
     advance: {
         type: Number
     },
-    netFare: {
-        type: Number,
-        require: true
+    comments: {
+        type: String
     },
     createdAt: {
         type: Date,
