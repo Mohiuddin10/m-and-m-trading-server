@@ -22,6 +22,14 @@ const getAllTruckRecpt = async (req, res) => {
 
 }
 
+// //get truck list by date & party name
+// const sortedTruckList = async (req, res) => {
+//     const id = req.params.id;
+//     console.log(id);
+//     const findDataByClientId = await TruckRecpDB.find(clientID)
+//     res.send(findDataByClientId)
+// }
+
 // get single truckData
 const getSingleTruckData = async (req, res) => {
     const id = req.params.id;
