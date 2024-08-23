@@ -22,13 +22,7 @@ const getAllTruckRecpt = async (req, res) => {
 
 }
 
-// //get truck list by date & party name
-// const sortedTruckList = async (req, res) => {
-//     const id = req.params.id;
-//     console.log(id);
-//     const findDataByClientId = await TruckRecpDB.find(clientID)
-//     res.send(findDataByClientId)
-// }
+
 
 // get single truckData
 const getSingleTruckData = async (req, res) => {
@@ -61,4 +55,21 @@ const getTruckRecpt = async (req, res) => {
 
 }
 
-module.exports = { getTruckRecpt, getAllTruckRecpt, getSingleTruckData };
+const deleteTruckRecpt = async (req, res) => {
+    const id = req.params.id;
+    const checkId = await TruckRecpDB.findOne({_id: id});
+    if (checkId) {
+        const deleteClient = await TruckRecpDB.findByIdAndDelete(checkId);
+        res.status(200).send({
+            success: true,
+            message: "client deleted successfully",
+        })
+    } else {
+        res.status(404).send({
+            success: false,
+            message: "no data found"
+        })
+    }
+}
+
+module.exports = { getTruckRecpt, getAllTruckRecpt, getSingleTruckData, deleteTruckRecpt };
