@@ -5,6 +5,10 @@ const truckRecpDB = new mongoose.Schema({
         type: String,
         require: true
     },
+    date: {
+        type: String,
+        require: true
+    },
     clientID: {
         type: String,
         require: true

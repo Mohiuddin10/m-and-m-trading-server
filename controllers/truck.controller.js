@@ -57,9 +57,10 @@ const getTruckRecpt = async (req, res) => {
 
 const deleteTruckRecpt = async (req, res) => {
     const id = req.params.id;
+    console.log(id);
     const checkId = await TruckRecpDB.findOne({_id: id});
     if (checkId) {
-        const deleteClient = await TruckRecpDB.findByIdAndDelete(checkId);
+        const deleteClient = await TruckRecpDB.findByIdAndDelete(id);
         res.status(200).send({
             success: true,
             message: "client deleted successfully",
