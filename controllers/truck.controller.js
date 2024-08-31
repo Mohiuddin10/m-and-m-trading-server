@@ -55,6 +55,24 @@ const getTruckRecpt = async (req, res) => {
 
 }
 
+const updateTruckrecpt = async (req, res) => {
+    const id = req.params.id;
+    const checkId = await TruckRecpDB.findOne({_id: id});
+    if (checkId) {
+        const updateTruck = await TruckRecpDB.findByIdAndUpdate(id, req.body);
+        res.status(200).send({
+            success: true,
+            message: "client updated successfully",
+            data: updateTruck
+        })
+    } else {
+        res.status(404).send({
+            success: false,
+            message: "no data found"
+        })
+    }
+}
+
 const deleteTruckRecpt = async (req, res) => {
     const id = req.params.id;
     console.log(id);
@@ -73,4 +91,4 @@ const deleteTruckRecpt = async (req, res) => {
     }
 }
 
-module.exports = { getTruckRecpt, getAllTruckRecpt, getSingleTruckData, deleteTruckRecpt };
+module.exports = { getTruckRecpt, getAllTruckRecpt, getSingleTruckData, deleteTruckRecpt, updateTruckrecpt };
